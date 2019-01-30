@@ -458,7 +458,7 @@
                 {
                     return bob.ToObject(metaData.ObjectType);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // no need to throw here, they will
                     // get an invalid cast exception right after this.
@@ -472,7 +472,7 @@
                         return JsonConvert.DeserializeObject((string)p, metaData.ObjectType);
                     return JsonConvert.DeserializeObject(p.ToString(), metaData.ObjectType);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     // no need to throw here, they will
                     // get an invalid cast exception right after this.
