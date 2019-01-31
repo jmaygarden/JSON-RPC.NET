@@ -21,6 +21,9 @@ namespace AustinHarris.JsonRpc.Newtonsoft
         [JsonProperty("method")]
         public string Method { get; set; }
 
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
         public string Raw { get; set; }
     }
 }

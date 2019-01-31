@@ -88,9 +88,14 @@ namespace AustinHarris.JsonRpc
                 }
                 // functions
                 var deser = typeof(IObjectFactory).GetMethods().First(x => {
-                    return x.Name == "DeserializeJsonRef" &&
+                    return (
+                    x.Name == "DeserializeJsonRef" &&
                     x.IsGenericMethod &&
-                    x.GetGenericArguments().Length == plist.Length;
+                    x.GetGenericArguments().Length == plist.Length
+                    ) || (
+                    x.Name == "DeserializeJson" &&
+                    0 == plist.Length
+                    );
                 }).MakeGenericMethod(plist);
                 var serialize = typeof(IObjectFactory).GetMethods().First(x =>
                 {

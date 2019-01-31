@@ -204,6 +204,8 @@
         {
             AddRpcContext(RpcContext);
 
+            response.SerializedId = Rpc.Id;
+
             var preProcessingException = PreProcess(Rpc, RpcContext);
             if (preProcessingException != null)
             {

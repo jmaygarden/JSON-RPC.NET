@@ -9,6 +9,7 @@ namespace AustinHarris.JsonRpc
         string ToJsonRpcResponse(ref InvokeResult response);
         object DeserializeJson(string json, Type type);
         string MethodName(string json);
+        string ClientId(string json);
 
         void DeserializeJsonRef<T>(string json, ref ValueTuple<T> functionParameters, ref string rawId, KeyValuePair<string,Type>[] functionParameterInfo);
         void DeserializeJsonRef<T1,T2>(string json, ref ValueTuple<T1, T2> functionParameters, ref string rawId, KeyValuePair<string, Type>[] functionParameterInfo);

@@ -4,6 +4,7 @@
     {
         string Raw { get; set; }
         string Method { get; set; }
+        string Id { get; set; }
     }
 
     public interface IJsonRequestFactory

@@ -126,9 +126,11 @@ namespace AustinHarris.JsonRpc
                 if (IsSingleRpc(jsonRpc))
                 {
                     var name = Handler._objectFactory.MethodName(jsonRpc);
+                    var id = Handler._objectFactory.ClientId(jsonRpc);
                     if (array1 == null)
                         array1 = new[] { Handler._objectFactory.CreateRequest() };
                     array1[0].Method = name;
+                    array1[0].Id = id;
                     array1[0].Raw = jsonRpc;
                     batch = array1; 
                 }
@@ -176,8 +178,6 @@ namespace AustinHarris.JsonRpc
                 {
                     handler.Handle(jsonRequest, ref jsonResponse, jsonRpcContext);
                     handler.PostProcess(jsonRequest, ref jsonResponse, jsonRpcContext);
-
-                    if (jsonResponse.SerializedResult == null) continue;
                 }
 
                 // special case optimization for single Item batch

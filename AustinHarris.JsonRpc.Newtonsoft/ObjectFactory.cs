@@ -59,7 +59,20 @@ namespace AustinHarris.JsonRpc.Newtonsoft
 
             throw new KeyNotFoundException(METHOD);
         }
-        
+
+        // JSMN implementation
+        public string ClientId(string json)
+        {
+            const string ID = "id";
+            string value;
+            if (jsmn.parseFirstField(json, ID, out value))
+            {
+                return value;
+            }
+
+            throw new KeyNotFoundException(ID);
+        }
+
         const string envelopeResult1 = "{\"jsonrpc\":\"2.0\",\"result\":";
         const string envelopeError1 = "{\"jsonrpc\":\"2.0\",\"error\":";
         const string envelope2 = ",\"id\":";
